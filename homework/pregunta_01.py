@@ -14,3 +14,19 @@ def pregunta_01():
     214
 
     """
+    # Carga
+    with open('files/input/data.csv', mode='r', encoding='utf-8') as archivo:
+        data = archivo.readlines()
+
+    # Observación
+    # for fila in data[:5]:  
+    #     print(fila)
+
+    # Limpieza
+    data = [linea.split() for linea in data]
+
+    #pregunta_01
+    columna2 = [int(fila[1]) for fila in data]
+    resultado = sum(columna2)
+
+    return(resultado)

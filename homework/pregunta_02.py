@@ -15,3 +15,30 @@ def pregunta_02():
     [('A', 8), ('B', 7), ('C', 5), ('D', 6), ('E', 14)]
 
     """
+
+    # Carga
+    with open('files/input/data.csv', mode='r', encoding='utf-8') as archivo:
+        data = archivo.readlines()
+
+    # Observación
+    # for fila in data[:5]:  
+    #     print(fila)
+
+    # Limpieza
+    data = [linea.split() for linea in data]
+
+    # Pregunta_02
+    letras = [fila[0] for fila in data]
+
+    dicAux = {}
+    for letra in letras:
+        if letra in dicAux:
+            dicAux[letra] += 1
+        else:
+            dicAux[letra] = 1
+    
+    resultado = list(dicAux.items())
+    resultado.sort(key = lambda x: x[0])
+    #registros = sorted(registros, key = lambda x: x[0])
+
+    return resultado
