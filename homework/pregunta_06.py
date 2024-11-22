@@ -26,3 +26,37 @@ def pregunta_06():
      ('jjj', 5, 17)]
 
     """
+
+    # Carga
+    with open('files/input/data.csv', mode='r', encoding='utf-8') as archivo:
+        data = archivo.readlines()
+    # Observación
+    # for fila in data[:5]:  
+    #     print(fila)
+
+    # Limpieza
+    data = [linea.split() for linea in data]
+    
+    # Pregunta_06
+    columna5 = [fila[4].split(",") for fila in data]
+    
+    dicAux = {}
+    for fila in columna5:
+        for elemento in fila:
+
+            listAux = elemento.split(":")
+            listAux[1] = int(listAux[1])
+
+            if listAux[0] in dicAux:
+                maximo = max(dicAux[listAux[0]][1], listAux[1])
+                minimo = min(dicAux[listAux[0]][0], listAux[1])
+                dicAux[listAux[0]] = [minimo, maximo]
+            else:
+                dicAux[listAux[0]] = [listAux[1], listAux[1]]
+
+    resultado = [(letra, valor[0], valor[1]) for letra, valor in dicAux.items()]
+    resultado.sort()
+    
+    return resultado
+
+

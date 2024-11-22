@@ -27,3 +27,36 @@ def pregunta_08():
      (9, ['A', 'B', 'C', 'E'])]
 
     """
+
+        # Carga
+    with open('files/input/data.csv', mode='r', encoding='utf-8') as archivo:
+        data = archivo.readlines()
+    # Observación
+    # for fila in data[:5]:  
+    #     print(fila)
+
+    # Limpieza
+    data = [linea.split() for linea in data]
+    
+    # Pregunta_08
+    letraValor = [(fila[0], fila[1]) for fila in data]
+
+    dicAux = {}
+
+    for tupla in letraValor:
+        letra = tupla[0]
+        valor = int(tupla[1])
+        if valor not in dicAux:
+            dicAux[valor] = [letra]
+        else:
+            if letra not in dicAux[valor]:
+                dicAux[valor].append(letra)
+
+    for lista in dicAux.values():
+        lista.sort()
+
+    resultado = [(clave, valor) for clave, valor in dicAux.items()]
+    resultado.sort()
+    
+    return resultado
+

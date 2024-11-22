@@ -15,3 +15,33 @@ def pregunta_12():
     {'A': 177, 'B': 187, 'C': 114, 'D': 136, 'E': 324}
 
     """
+
+    # Carga
+    with open('files/input/data.csv', mode='r', encoding='utf-8') as archivo:
+        data = archivo.readlines()
+        
+    # Observación
+    # for fila in data[:5]:  
+    #     print(fila)
+
+    # Limpieza
+    data = [linea.split() for linea in data]
+    
+    # Pregunta_12
+    letraValores = [(fila[0], fila[4].split(',')) for fila in data]
+
+    respuesta = {}
+
+    for tupla in letraValores:
+        letra, valores = tupla
+        for valor in valores:
+            valor = int(valor.split(':')[1])
+            if letra not in respuesta:
+                respuesta[letra] = valor
+            else:
+                respuesta[letra] += valor
+    
+    respuesta = dict(sorted(respuesta.items()))
+    return respuesta
+
+# pregunta_12()

@@ -27,7 +27,7 @@ def pregunta_03():
     # Limpieza
     data = [linea.split() for linea in data]
 
-    # Pregunta_02
+    # Pregunta_03
     letrasCantidad = [(fila[0], int(fila[1])) for fila in data]
     
     dicAux = {}
@@ -41,6 +41,7 @@ def pregunta_03():
     resultado = list(dicAux.items())
     resultado.sort(key = lambda x: x[0])
     #registros = sorted(registros, key = lambda x: x[0])
+    
     # print(resultado)
     return resultado
 

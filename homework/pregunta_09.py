@@ -24,3 +24,30 @@ def pregunta_09():
      'jjj': 18}}
 
     """
+
+    # Carga
+    with open('files/input/data.csv', mode='r', encoding='utf-8') as archivo:
+        data = archivo.readlines()
+    # Observación
+    # for fila in data[:5]:  
+    #     print(fila)
+
+    # Limpieza
+    data = [linea.split() for linea in data]
+    
+    # Pregunta_09
+    columna5 = [fila[4].split(",") for fila in data]
+    
+    respuesta = {}
+
+    for fila in columna5:
+        for elemento in fila:
+            letra, _ = elemento.split(":")
+            if letra not in respuesta:
+                respuesta[letra] = 1
+            else:
+                respuesta[letra] += 1
+    
+    respuesta = dict(sorted(respuesta.items()))
+    return respuesta
+

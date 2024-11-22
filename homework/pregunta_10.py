@@ -17,6 +17,22 @@ def pregunta_10():
      ...
      ('E', 2, 3),
      ('E', 3, 3)]
-
-
     """
+
+    # Carga
+    with open('files/input/data.csv', mode='r', encoding='utf-8') as archivo:
+        data = archivo.readlines()
+        
+    # Observación
+    # for fila in data[:5]:  
+    #     print(fila)
+
+    # Limpieza
+    data = [linea.split() for linea in data]
+    
+    # Pregunta_10
+    respuesta = [(fila[0], len(fila[3].split(",")), len(fila[4].split(","))) for fila in data]
+    
+    return respuesta
+
+# pregunta_10()
